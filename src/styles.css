@@ -139,10 +139,9 @@
 }
 
 @utility acid-underline {
-  background-image: linear-gradient(var(--acid), var(--acid));
-  background-repeat: no-repeat;
-  background-position: 0 92%;
-  background-size: 100% 0.14em;
+  display: inline-block;
+  padding-bottom: 0.1em;
+  border-bottom: 0.09em solid var(--acid);
 }
 
 @utility grain {
