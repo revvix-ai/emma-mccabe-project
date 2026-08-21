@@ -139,10 +139,11 @@
 }
 
 @utility acid-underline {
-  display: inline-block;
-  line-height: 1;
-  padding-bottom: 0.14em;
-  border-bottom: 0.09em solid var(--acid);
+  text-decoration-line: underline;
+  text-decoration-color: var(--acid);
+  text-decoration-thickness: 0.075em;
+  text-underline-offset: 0.06em;
+  text-decoration-skip-ink: none;
 }
 
 @utility grain {
