@@ -140,7 +140,8 @@
 
 @utility acid-underline {
   display: inline-block;
-  padding-bottom: 0.1em;
+  line-height: 1;
+  padding-bottom: 0.14em;
   border-bottom: 0.09em solid var(--acid);
 }
 
