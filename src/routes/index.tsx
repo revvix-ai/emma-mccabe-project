@@ -54,7 +54,9 @@ function Home() {
               <br />
               you&apos;re
               <br />
-              <span className="acid-underline">obsessed</span> with.
+              obsessed
+              <br />
+              <span className="acid-underline">with.</span>
             </h1>
 
             <p className="mt-10 max-w-md text-lg leading-relaxed text-muted-foreground md:text-xl">
@@ -181,7 +183,7 @@ function Home() {
                   tone="cream"
                   className="mt-6 lg:ml-16"
                 />
-                <div className="mt-8 hidden justify-end lg:flex">
+                <div className="absolute -right-5 bottom-24 hidden lg:block">
                   <VerticalLabel>Ireland → Bali → Everywhere</VerticalLabel>
                 </div>
               </div>
