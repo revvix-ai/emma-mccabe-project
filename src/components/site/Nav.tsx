@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 
 const links = [
   { label: "About", href: "#story" },
-  { label: "Work With Me", href: "#offers" },
   { label: "Results", href: "#results" },
+  { label: "Work With Me", href: "#offers" },
   { label: "1% Movement", href: "#movement" },
   { label: "Resources", href: "#resources" },
   { label: "Content", href: "#content" },
@@ -22,9 +22,8 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
-        solid ? "bg-background/85 backdrop-blur-md" : "bg-transparent"
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${solid ? "bg-background/85 backdrop-blur-md" : "bg-transparent"
+        }`}
     >
       <div className="mx-auto flex h-16 max-w-[1600px] items-center justify-between gap-8 border-b border-hairline px-5 md:h-20 md:px-10">
         <a href="#top" className="display text-lg tracking-[0.02em] md:text-xl">
@@ -45,7 +44,9 @@ export function Nav() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#apply"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdZFCRlA5xdkkL_S7qBXq2-MecbpBrhE--qqzcTmUrUGTaQSQ/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
             className="label hidden border border-acid px-4 py-3 text-acid transition-colors hover:bg-acid hover:text-primary-foreground md:inline-block"
           >
             Apply to work with me
@@ -76,7 +77,7 @@ export function Nav() {
               </li>
             ))}
             <li>
-              <a href="#apply" onClick={() => setOpen(false)} className="display text-3xl text-acid">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdZFCRlA5xdkkL_S7qBXq2-MecbpBrhE--qqzcTmUrUGTaQSQ/viewform" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="display text-3xl text-acid">
                 Apply
               </a>
             </li>

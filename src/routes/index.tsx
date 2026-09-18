@@ -64,8 +64,8 @@ function Home() {
             </p>
 
             <div className="mt-10 flex flex-wrap items-center gap-3">
-              <ArrowCta href="#apply">Apply to work with Emma</ArrowCta>
-              <ArrowCta href="#movement" variant="outline">
+              <ArrowCta href="https://docs.google.com/forms/d/e/1FAIpQLSdZFCRlA5xdkkL_S7qBXq2-MecbpBrhE--qqzcTmUrUGTaQSQ/viewform">Apply to work with Emma</ArrowCta>
+              <ArrowCta href="https://www.skool.com/the-1-movement-7592/about" variant="outline">
                 Explore the 1% Movement
               </ArrowCta>
             </div>
@@ -295,7 +295,7 @@ function Home() {
                   )}
                 </ul>
                 <div className="mt-10">
-                  <ArrowCta href="#apply">Apply for private coaching</ArrowCta>
+                  <ArrowCta href="https://docs.google.com/forms/d/e/1FAIpQLSdZFCRlA5xdkkL_S7qBXq2-MecbpBrhE--qqzcTmUrUGTaQSQ/viewform">Apply for private coaching</ArrowCta>
                 </div>
                 <Placeholder
                   label="Coaching image — Emma in session"
@@ -330,7 +330,7 @@ function Home() {
                   )}
                 </ul>
                 <div className="mt-10">
-                  <ArrowCta href="#movement" variant="outlineDark">
+                  <ArrowCta href="https://www.skool.com/the-1-movement-7592/about" variant="outlineDark">
                     Enter the 1%
                   </ArrowCta>
                 </div>
@@ -361,7 +361,7 @@ function Home() {
                 For the people who refuse to settle for an ordinary life.
               </p>
               <div className="mt-10">
-                <ArrowCta href="#apply">Join the movement</ArrowCta>
+                <ArrowCta href="https://www.skool.com/the-1-movement-7592/about">Join the movement</ArrowCta>
               </div>
             </div>
 
@@ -395,7 +395,7 @@ function Home() {
                 <br />
                 playbook.
               </h2>
-              <ArrowCta href="#apply" variant="outlineDark">
+              <ArrowCta href="https://docs.google.com/forms/d/e/1FAIpQLSdZFCRlA5xdkkL_S7qBXq2-MecbpBrhE--qqzcTmUrUGTaQSQ/viewform" variant="outlineDark">
                 Get the free resources
               </ArrowCta>
             </div>
@@ -459,13 +459,13 @@ function Home() {
 
             <div className="grid gap-6 lg:col-span-4">
               {[
-                ["Podcast", "The identity shift that precedes every income jump"],
-                ["Instagram", "The reel format that generated €131K"],
-                ["YouTube", "How to fill your calendar without ads"],
-              ].map(([tag, title]) => (
+                ["Podcast", "The identity shift that precedes every income jump", "https://podcasts.apple.com/us/podcast/life-is-a-game/id1747220692"],
+                ["Guest", "Decoding Wisdom: She made €131k from one reel", "https://poddtoppen.se/podcast/1794697068/decoding-wisdom/053-emma-mccabe-she-made-eur131000-from-one-instagram-reel"],
+                ["YouTube", "How to fill your calendar without ads", "https://www.youtube.com/@EmmaMccabeBiz"],
+              ].map(([tag, title, href]) => (
                 <article key={title} className="border-t border-hairline pt-5">
                   <span className="label text-acid">{tag}</span>
-                  <p className="mt-3 text-lg leading-snug">{title}</p>
+                  <a href={href} target="_blank" rel="noopener noreferrer" className="mt-3 block text-lg leading-snug hover:text-acid transition-colors">{title}</a>
                 </article>
               ))}
             </div>
@@ -492,8 +492,11 @@ function Home() {
               Build the business. Change the identity. Create the life.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <ArrowCta href="#apply">Apply to work with Emma</ArrowCta>
-              <ArrowCta href="#movement" variant="outline">
+              <ArrowCta href="https://docs.google.com/forms/d/e/1FAIpQLSdZFCRlA5xdkkL_S7qBXq2-MecbpBrhE--qqzcTmUrUGTaQSQ/viewform">Apply to work with Emma</ArrowCta>
+              <ArrowCta href="https://calendly.com/emma-mccabe328/30-minute-discovery-call" variant="outline">
+                Book a Discovery Call
+              </ArrowCta>
+              <ArrowCta href="https://www.skool.com/the-1-movement-7592/about" variant="outline">
                 Join the 1%
               </ArrowCta>
             </div>
@@ -507,9 +510,14 @@ function Home() {
             Emma<span className="text-acid">.</span>McCabe
           </span>
           <div className="flex flex-wrap gap-x-8 gap-y-2">
-            {["Instagram", "YouTube", "Podcast", "Contact"].map((l) => (
-              <a key={l} href="#top" className="label text-muted-foreground hover:text-acid">
-                {l}
+            {[
+              { label: "Instagram", href: "https://www.instagram.com/emccabemindset/" },
+              { label: "YouTube", href: "https://www.youtube.com/@EmmaMccabeBiz" },
+              { label: "Podcast", href: "https://podcasts.apple.com/us/podcast/life-is-a-game/id1747220692" },
+              { label: "Contact", href: "https://calendly.com/emma-mccabe328/30-minute-discovery-call" },
+            ].map((l) => (
+              <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className="label text-muted-foreground hover:text-acid">
+                {l.label}
               </a>
             ))}
           </div>

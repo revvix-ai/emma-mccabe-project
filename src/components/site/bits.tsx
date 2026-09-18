@@ -52,9 +52,12 @@ export function ArrowCta({
     outlineDark: "border border-hairline-dark text-ink hover:border-acid hover:bg-acid",
   }[variant];
 
+  const isExternal = href?.startsWith("http");
+
   return (
     <a
       href={href}
+      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className={`label group inline-flex items-center gap-3 px-6 py-4 transition-all duration-300 ${styles}`}
     >
       {children}
