@@ -111,6 +111,19 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         {children}
         <Scripts />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.YGC_WIDGET_ID = "${import.meta.env['VITE_YOURGPT_WIDGET_ID'] || ""}";
+              (function() {
+                var script = document.createElement('script');
+                script.src = "https://widget.yourgpt.ai/script.js";
+                script.id = 'yourgpt-chatbot';
+                document.body.appendChild(script);
+              })();
+            `,
+          }}
+        />
       </body>
     </html>
   );

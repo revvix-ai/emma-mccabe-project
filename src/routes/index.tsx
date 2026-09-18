@@ -7,7 +7,7 @@ import { ArrowCta, BigNumber, SectionMark, VerticalLabel } from "@/components/si
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Emma McCabe — Business & Mindset Coach for Ambitious Founders" },
+      { title: "Emma McCabe | Business & Mindset Mentor" },
       {
         name: "description",
         content:
@@ -408,9 +408,8 @@ function Home() {
               ].map(([num, title, copy], i) => (
                 <article
                   key={title}
-                  className={`group border-t border-ink pt-6 ${i === 1 ? "md:mt-14" : ""} ${
-                    i === 2 ? "md:mt-28" : ""
-                  }`}
+                  className={`group border-t border-ink pt-6 ${i === 1 ? "md:mt-14" : ""} ${i === 2 ? "md:mt-28" : ""
+                    }`}
                 >
                   <span className="label text-ink/45">{num}</span>
                   <Placeholder
