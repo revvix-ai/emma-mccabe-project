@@ -1,8 +1,13 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { Nav } from "@/components/site/Nav";
 import { Placeholder } from "@/components/site/Placeholder";
 import { ArrowCta, BigNumber, SectionMark, VerticalLabel } from "@/components/site/bits";
+import heroImage from "@/assets/photographs/emma.png";
+import thumb1 from "@/assets/content/01_thumnail.png";
+import thumb2 from "@/assets/content/02_thumnail.png";
+import thumb3 from "@/assets/content/03_thumnail.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -34,6 +39,8 @@ const marquee = [
 ];
 
 function Home() {
+  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
+
   return (
     <div id="top" className="bg-background">
       <Nav />
@@ -71,16 +78,40 @@ function Home() {
             </div>
           </div>
 
-          <div className="relative lg:col-span-5">
-            <Placeholder
-              label="Hero image — cinematic full-length portrait of Emma"
-              ratio="4/5"
-              className="rise"
-            />
-            <div className="absolute -left-4 bottom-6 hidden lg:block">
-              <span className="vertical-type label text-muted-foreground tracking-[0.4em]">
-                Est. Ireland → Bali
-              </span>
+          <div className="relative lg:col-span-5 flex items-center justify-center py-12">
+            <div className="rise relative group">
+
+              {/* Offset decorative frame behind */}
+              <div className="absolute -inset-4 md:-inset-6 rounded-3xl border border-white/10 
+                    bg-gradient-to-br from-white/[0.03] to-transparent 
+                    rotate-[-3deg] transition-transform duration-700 
+                    group-hover:rotate-[-1deg]" />
+
+              {/* Soft glow blob */}
+              <div className="absolute inset-0 -z-10 blur-3xl opacity-40 
+                    bg-gradient-to-tr from-amber-200/30 via-rose-200/20 to-transparent 
+                    rounded-full" />
+
+              {/* The image */}
+              <img
+                src={heroImage}
+                alt="Emma McCabe Portrait"
+                className="relative w-[380px] md:w-[460px] lg:w-[540px] aspect-[3/4]
+                 object-cover rounded-2xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)]
+                 ring-1 ring-white/15
+                 transition-all duration-700 ease-out
+                 group-hover:-translate-y-2 group-hover:rotate-[1deg] 
+                 group-hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.7)]"
+              />
+
+              {/* Small caption tag */}
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 
+                    px-4 py-1.5 rounded-full bg-background/80 backdrop-blur 
+                    border border-white/10 text-[10px] tracking-[0.3em] 
+                    uppercase text-muted-foreground whitespace-nowrap">
+                Emma McCabe
+              </div>
+
             </div>
           </div>
         </div>
@@ -245,12 +276,39 @@ function Home() {
           {/* Dense strip */}
           <div className="mt-24 grid gap-px border border-hairline bg-hairline md:grid-cols-3">
             {[
-              ["10X", "Business growth in twelve months", "Video testimonial"],
-              ["20K", "Follower growth, organic only", "Video testimonial"],
-              ["$3K", "First $3K month in 90 days", "Video testimonial"],
-            ].map(([value, caption, tag]) => (
-              <div key={value} className="bg-background p-8">
-                <Placeholder label={`${tag} thumbnail`} ratio="16/10" />
+              ["10K", "Follower growth, organic only", thumb1, "J2m0YlZdI9g"],
+              ["20X", "Business growth in twelve months", thumb2, "Ill5FO_9_NE"],
+              ["$30K", "How to 10x speed your progress", thumb3, "Yzhkz3EepEY"],
+            ].map(([value, caption, thumb, videoId]) => (
+              <div key={value} className="bg-background p-8 group cursor-pointer" onClick={() => setPlayingVideo(videoId as string)}>
+                <div className="relative overflow-hidden" style={{ aspectRatio: "16/10" }}>
+                  {playingVideo === videoId ? (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
+                      title="Video testimonial"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      className="absolute inset-0 h-full w-full border-0"
+                    />
+                  ) : (
+                    <>
+                      <Placeholder label="Video testimonial thumbnail" ratio="16/10" />
+                      <img
+                        src={thumb}
+                        alt={caption}
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      {/* Play icon overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors group-hover:bg-black/20">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-acid text-primary-foreground shadow-lg backdrop-blur transition-transform group-hover:scale-110">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="ml-1 h-5 w-5">
+                            <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
                 <div className="display mt-8 text-[clamp(3rem,6vw,5rem)] text-acid">{value}</div>
                 <p className="label mt-3 text-muted-foreground">{caption}</p>
               </div>
