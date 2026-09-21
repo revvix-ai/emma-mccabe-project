@@ -8,6 +8,7 @@ import heroImage from "@/assets/photographs/emma.png";
 import thumb1 from "@/assets/content/01_thumnail.png";
 import thumb2 from "@/assets/content/02_thumnail.png";
 import thumb3 from "@/assets/content/03_thumnail.png";
+import thumb4 from "@/assets/content/04_thumnail.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -498,11 +499,38 @@ function Home() {
 
           <div className="mt-16 grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-8">
-              <div className="relative">
-                <Placeholder label="Featured video — latest YouTube episode" ratio="16/9" />
-                <span className="label absolute bottom-4 left-4 bg-acid px-3 py-2 text-primary-foreground">
-                  ▶ Watch the latest
-                </span>
+              <div className="relative overflow-hidden group cursor-pointer" onClick={() => setPlayingVideo("sVoO8oudLaw")} style={{ aspectRatio: "16/9" }}>
+                {playingVideo === "sVoO8oudLaw" ? (
+                  <iframe
+                    src={`https://www.youtube.com/embed/sVoO8oudLaw?autoplay=1&rel=0`}
+                    title="Featured video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="absolute inset-0 h-full w-full border-0"
+                  />
+                ) : (
+                  <>
+                    <Placeholder label="Featured video — latest YouTube episode" ratio="16/9" />
+                    <img
+                      src={thumb4}
+                      alt="Latest YouTube Episode"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    
+                    {/* Play icon overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-acid text-primary-foreground shadow-xl backdrop-blur transition-transform group-hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="ml-1 h-7 w-7">
+                          <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <button className="label absolute bottom-4 left-4 bg-acid px-4 py-2 text-primary-foreground shadow-md transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 group-hover:shadow-xl">
+                      ▶ Watch the latest
+                    </button>
+                  </>
+                )}
               </div>
               <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3 border-t border-hairline pt-5">
                 {["Instagram", "YouTube", "Podcast", "Business", "Mindset", "Sales", "Content"].map(
